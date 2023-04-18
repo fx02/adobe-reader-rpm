@@ -31,15 +31,15 @@ Requires: coreutils
 
 # 'Unable to locate theme engine in module_path: "adwaita"' acroread runtime
 # Gtk-Message warning is suppressed with adwaita-gtk2-theme.i686
-Recommends: adwaita-gtk2-theme(x86-32)
+BuildRequires: adwaita-gtk2-theme(x86-32)
 
 # 'Failed to load module "canberra-gtk-module"'acroread runtime Gtk-Message
 # warning is suppressed with libcanberra-gtk2.i686
-Recommends: libcanberra-gtk2(x86-32)
+BuildRequires: libcanberra-gtk2(x86-32)
 
 # 'Failed to load module "pk-gtk-module"' acroread runtime Gtk-Message warning
 # is suppressed with PackageKit-gtk3-module.i686
-Recommends: PackageKit-gtk3-module(x86-32)
+BuildRequires: PackageKit-gtk3-module(x86-32)
 
 Provides: %{_bindir}/acroread
 
