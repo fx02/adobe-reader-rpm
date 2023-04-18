@@ -92,12 +92,14 @@ cp -p AdobeReader.spec ~/rpmbuild/SPECS/
 
 curl -O ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.5.5/enu/AdbeRdr9.5.5-1_i486linux_enu.rpm
 curl -O https://archives.fedoraproject.org/pub/archive/fedora/linux/releases/31/Everything/x86_64/os/Packages/p/pangox-compat-0.0.2-15.fc31.i686.rpm
-curl -O https://vault.centos.org/8.5.2111/AppStream/x86_64/os/Packages/libidn-1.34-5.el8.i686.rpm
+# not needed for CentOS7
+#curl -O https://vault.centos.org/8.5.2111/AppStream/x86_64/os/Packages/libidn-1.34-5.el8.i686.rpm
 
 cp -p AdbeRdr9.5.5-1_i486linux_enu.rpm ~/rpmbuild/SOURCES/
 
-rpm2cpio libidn-1.34-5.el8.i686.rpm | cpio -idm
-cp -p usr/lib/libidn.so.11.6.18 ~/rpmbuild/SOURCES/
+# not needed for CentOS7
+#rpm2cpio libidn-1.34-5.el8.i686.rpm | cpio -idm
+#cp -p usr/lib/libidn.so.11.6.18 ~/rpmbuild/SOURCES/
 
 rpm2cpio pangox-compat-0.0.2-15.fc31.i686.rpm | zstd -d | cpio -idm
 cp -p usr/lib/libpangox-1.0.so.0.0.0 ~/rpmbuild/SOURCES/
