@@ -1,5 +1,5 @@
 # Re-packaging the Adobe Reader RPM
-**(for newer Fedora and RHEL >=8 releases)**
+**(for Fedora and RHEL 7 releases)**
 
 Adobe Reader for Linux is no longer supported by Adobe. Acrobat Reader 9.5.5
 was the last version released back in April, 2013. 
@@ -8,7 +8,7 @@ Unfortunately trying to install `AdbeRdr9.5.5-1_i486linux_enu.rpm` on newer
 Fedora or RHEL releases results in unsatisfied dependencies :
 
 ```
-$ sudo dnf install ./AdbeRdr9.5.5-1_i486linux_enu.rpm
+$ sudo yum install ./AdbeRdr9.5.5-1_i486linux_enu.rpm
 Error: 
  Problem: conflicting requests
   - nothing provides /bin/basename needed by AdobeReader_enu-9.5.5-1.i486
@@ -85,7 +85,8 @@ rpmbuild/
 ## Fetch files, extract library files and copy to rpmbuild sub-directories
 
 ```
-git checkout https://github.com/eait-cups-printing/adobe-reader-rpm.git
+yum install zstd
+git clone https://github.com/eait-cups-printing/adobe-reader-rpm.git
 cd adobe-reader-rpm/
 cp -p AdobeReader.spec ~/rpmbuild/SPECS/
 
@@ -98,7 +99,7 @@ cp -p AdbeRdr9.5.5-1_i486linux_enu.rpm ~/rpmbuild/SOURCES/
 rpm2cpio libidn-1.34-5.el8.i686.rpm | cpio -idm
 cp -p usr/lib/libidn.so.11.6.18 ~/rpmbuild/SOURCES/
 
-rpm2cpio pangox-compat-0.0.2-15.fc31.i686.rpm | cpio -idm
+rpm2cpio pangox-compat-0.0.2-15.fc31.i686.rpm | zstd -d | cpio -idm
 cp -p usr/lib/libpangox-1.0.so.0.0.0 ~/rpmbuild/SOURCES/
 ```
 
